@@ -1,3 +1,31 @@
+
+Feature 1: display Image
+I started this at 3:40 and finsihed at 4:30
+it took me 50 minutes to complete this task
+
+Feature 2: Allow users to vote for their favorite beast
+I started this at 5:30 and finished at 6:00 this feature took 30 minutes
+
+Feature 3: BootStrap
+I was following along in class so the bootstrap library was already added.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

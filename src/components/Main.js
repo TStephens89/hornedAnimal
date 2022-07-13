@@ -1,13 +1,30 @@
 import { Component } from 'react';
 import HornedBeast from './HornedBeast.js';
+import list from '../components/data.json'
+import Results from './Results'
 class Main extends Component{
-  // constructor () {
-  //   super();
-  // }
+  constructor () {
+    super();
+    this.state = {
+      currentBeast: {image_url: null},
+      HornedBeast: list,
+    }
+  }
+  selectCurrentBeast = (beast) => {
+    this.setState({ currentBeast: beast});
+  }
     render() {
       return (
         <>
-        <HornedBeast
+        <Results currentBeast={this.state.currentBeast}/>
+        {this.state.HornedBeast.map((beast,i)=><HornedBeast key={i} beast={beast} />)}
+        </>
+        )
+      }
+  }
+  export default Main
+        
+        {/* <HornedBeast
         image_url = "http://3.bp.blogspot.com/_DBYF1AdFaHw/TE-f0cDQ24I/AAAAAAAACZg/l-FdTZ6M7z8/s1600/Unicorn_and_Narwhal_by_dinglehopper.jpg" 
         title = "UniWhal"
         description = "A unicorn and a narwhal nuzzling their horns"/>
@@ -20,11 +37,5 @@ class Main extends Component{
         <HornedBeast
         image_url = "https://www.dhresource.com/0x0s/f2-albu-g5-M00-1A-11-rBVaI1hsIIiALxKzAAIHjSU3VkE490.jpg/wholesale-halloween-costume-prop-unicorn.jpg" 
         title = "Unicorn Head"
-        description = "Someone wearing a very silly unicorn head mask"/>
-        {/* <p> thing 1 </p>
-        <p> thing 2</p> */}
-        </>
-      )
-    }
-}
-export default Main
+        description = "Someone wearing a very silly unicorn head mask"/> */}
+        
