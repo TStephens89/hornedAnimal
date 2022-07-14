@@ -9,7 +9,8 @@ I started this at 5:30 and finished at 6:00 this feature took 30 minutes
 Feature 3: BootStrap
 I was following along in class so the bootstrap library was already added.
 
-
+Feature 4: Gallery of Horns
+I started this at 3:20 and I was done by 5:00 took an hour 40 min
 
 
 
