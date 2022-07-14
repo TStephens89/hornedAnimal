@@ -2,22 +2,29 @@ import { Component } from 'react';
 import HornedBeast from './HornedBeast.js';
 import list from '../components/data.json'
 import Results from './Results'
+import BeastModal from './BeastModal.js';
 class Main extends Component{
   constructor () {
     super();
     this.state = {
       currentBeast: {image_url: null},
       HornedBeast: list,
+      show: false
     }
   }
-  selectCurrentBeast = (beast) => {
-    this.setState({ currentBeast: beast});
-  }
+
+  handleClose = () => this.setState({ show: false });
+  handleShow = (beast) => this.setState({currentBeast:beast, show: true });
     render() {
       return (
         <>
         <Results currentBeast={this.state.currentBeast}/>
-        {this.state.HornedBeast.map((beast,i)=><HornedBeast key={i} beast={beast} />)}
+        {this.state.HornedBeast.map((beast,i)=><HornedBeast key={i} beast={beast} handleShow={this.handleShow} />)}
+        <BeastModal 
+        show = {this.state.show}
+        currentBeast = {this.state.currentBeast}
+        handleClose = {this.handleClose}
+        />
         </>
         )
       }

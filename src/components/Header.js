@@ -7,7 +7,9 @@ class Header extends Component{
   // }
     render() {
       return (
-        <h1>Horned Beast</h1>
+        <div><h1>Horned Beast</h1>
+        <h2>Here you can find some of your favorite Horned BEAST</h2>
+        </div>
       )
     }
 }

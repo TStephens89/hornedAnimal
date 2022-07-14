@@ -12,11 +12,15 @@ class HornedBeast extends Component {
       likes: this.state.likes + 1
     })
   }
+  handleClick = ()=>{
+    this.addClick()
+    this.props.handleShow(this.props.beast)
+  }
   render() {
     return (
 
       <div>
-        <Image width="200px" src={this.props.beast.image_url} onClick={this.addClick} />
+        <Image width="200px" src={this.props.beast.image_url} onClick={this.handleClick} />
         <p>&hearts; {this.state.likes} </p>
       </div>
     )
