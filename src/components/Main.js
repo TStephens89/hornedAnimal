@@ -3,33 +3,52 @@ import HornedBeast from './HornedBeast.js';
 import list from '../components/data.json'
 import Results from './Results'
 import BeastModal from './BeastModal.js';
-class Main extends Component{
-  constructor () {
+import SimpleForm from './Form.js';
+class Main extends Component {
+  constructor() {
     super();
     this.state = {
-      currentBeast: {image_url: null},
-      HornedBeast: list,
+      currentBeast: { image_url: null },
+      beastList: list,
       show: false
     }
   }
-
-  handleClose = () => this.setState({ show: false });
-  handleShow = (beast) => this.setState({currentBeast:beast, show: true });
-    render() {
-      return (
-        <>
-        <Results currentBeast={this.state.currentBeast}/>
-        {this.state.HornedBeast.map((beast,i)=><HornedBeast key={i} beast={beast} handleShow={this.handleShow} />)}
-        <BeastModal 
-        show = {this.state.show}
-        currentBeast = {this.state.currentBeast}
-        handleClose = {this.handleClose}
-        />
-        </>
-        )
-      }
+  filterHorns = (e) => {
+    console.log(e)
+    let numberOfHorns = parseInt(e.target.value)
+    if (!numberOfHorns) {
+     //changes current value in state
+      this.setState({ beastList: list })
+    } else if (numberOfHorns === 4) {
+      let filteredList = list.filter(creature => 3 < creature.horns)
+      this.setState({ beastList: filteredList })
+    }
+    else {
+      let filteredList = list.filter(creature => numberOfHorns === creature.horns)
+      this.setState({beastList: filteredList})
+      console.log('this is filtered list:' ,filteredList)
+      console.log('this is the number of horns:',numberOfHorns);
+    }
   }
-  export default Main
+  handleClose = () => this.setState({ show: false });
+  handleShow = (beast) => this.setState({ currentBeast: beast, show: true });
+  render() {
+    return (
+      <>
+        <SimpleForm
+          filterHorns={this.filterHorns} />
+        <Results currentBeast={this.state.currentBeast} />
+        {this.state.beastList.map((beast, i) => <HornedBeast key={i} beast={beast} handleShow={this.handleShow} />)}
+        <BeastModal
+          show={this.state.show}
+          currentBeast={this.state.currentBeast}
+          handleClose={this.handleClose}
+        />
+      </>
+    )
+  }
+}
+export default Main
 
 // { <HornedBeast }
 // image_url = "http://3.bp.blogspot.com/_DBYF1AdFaHw/TE-f0cDQ24I/AAAAAAAACZg/l-FdTZ6M7z8/s1600/Unicorn_and_Narwhal_by_dinglehopper.jpg" 
